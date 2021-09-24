@@ -6,7 +6,7 @@ interface Props {
 
 const Tag = ({ children }: Props) => {
   return (
-    <div className="p-2 text-sm font-bold border rounded-md cursor-pointer bg-light-grayish-cyan-bg text-desaturated-dark-cyan">
+    <div className="p-2 font-bold rounded-md cursor-pointer select-none lg:text-xs hover:text-light-grayish-cyan bg-light-grayish-cyan-bg text-desaturated-dark-cyan hover:bg-desaturated-dark-cyan">
       {children}
     </div>
   );

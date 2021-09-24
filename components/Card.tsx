@@ -17,14 +17,16 @@ const Card = ({
   languages,
   tools,
 }: dataType) => {
-  console.log(New);
-
   return (
-    <div className="flex items-center w-4/5 h-32 px-10 mx-auto mb-6 bg-white rounded-lg shadow-lg">
-      <div className="flex items-center h-full mr-10 ">
+    <div
+      className={`flex flex-col lg:flex-row border-l-[6px] lg:items-center w-4/5 lg:h-32 px-10 mx-auto lg:mb-6 mb-16 mt- bg-white rounded-lg shadow-lg ${
+        featured ? 'border-desaturated-dark-cyan' : 'border-transparent'
+      }`}
+    >
+      <div className="flex items-center h-full mr-10 -mt-10">
         <Image src={logo} width="80" height="80" />
       </div>
-      <div className="flex flex-col justify-between flex-1 h-full py-5">
+      <div className="flex flex-col h-full py-5 space-y-4 lg:space-y-0 lg:justify-between lg:flex-1">
         <div className="flex items-center space-x-4 text-sm">
           <p className="font-bold text-desaturated-dark-cyan">{company}</p>
           {New && (
@@ -47,7 +49,7 @@ const Card = ({
           <span>{location}</span>
         </p>
       </div>
-      <div className="flex flex-wrap items-center justify-end flex-1 gap-4 p-4">
+      <div className="flex flex-wrap gap-4 py-4 border-t-2 lg:border-none lg:flex-1 lg:p-4 lg:items-center lg:justify-end">
         <Tag>{role}</Tag>
         <Tag>{level}</Tag>
         {languages.map((lang) => (
