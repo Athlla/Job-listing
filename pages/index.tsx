@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 
 import { FilterContext } from '../context/FilterContext';
+import Attribution from '../components/Attribution';
 import Card from '../components/Card';
 import Tag from '../components/Tag';
 import data from '../data.json';
@@ -16,8 +17,6 @@ const Home = () => {
   const filteredData = newData.filter((itemData) =>
     tags.every((tag) => itemData.tags.includes(tag))
   );
-
-  console.log(filteredData);
 
   return (
     <>
@@ -47,6 +46,8 @@ const Home = () => {
         {filteredData.map((item) => (
           <Card key={item.id} {...item} />
         ))}
+
+        <Attribution />
       </main>
     </>
   );

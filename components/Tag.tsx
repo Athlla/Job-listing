@@ -12,7 +12,9 @@ const Tag = ({ children, close }: Props) => {
   return (
     <div className="flex">
       <div
-        className="p-2 font-bold rounded-md rounded-r-none cursor-pointer select-none lg:text-xs hover:text-light-grayish-cyan bg-light-grayish-cyan-bg text-desaturated-dark-cyan hover:bg-desaturated-dark-cyan"
+        className={`p-2 font-bold rounded-md cursor-pointer select-none lg:text-xs hover:text-light-grayish-cyan bg-light-grayish-cyan-bg text-desaturated-dark-cyan hover:bg-desaturated-dark-cyan ${
+          close && 'rounded-r-none'
+        }`}
         onClick={() => add(children)}
       >
         {children}
