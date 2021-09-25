@@ -17,7 +17,7 @@ const initialState: filterType = {
 export const FilterContext = createContext<filterType>(initialState);
 
 const FilterProvider = ({ children }: { children: ReactNode }) => {
-  const [tags, setTags] = useState<string[]>(['JavaScript', 'Frontend', 'CSS']);
+  const [tags, setTags] = useState<string[]>([]);
 
   const addTagsHandler = (name: string) => {
     if (tags.includes(name)) {

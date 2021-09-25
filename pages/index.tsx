@@ -1,19 +1,33 @@
-import Card from '../components/Card';
-import data from '../data.json';
-import Tag from '../components/Tag';
 import { useContext } from 'react';
+
 import { FilterContext } from '../context/FilterContext';
+import Card from '../components/Card';
+import Tag from '../components/Tag';
+import data from '../data.json';
 
 const Home = () => {
   const { tags, clear } = useContext(FilterContext);
 
-  console.log(tags);
+  const newData = data.map((item) => ({
+    ...item,
+    tags: [item.role, item.level, ...item.languages, ...item.tools],
+  }));
+
+  const filteredData = newData.filter((itemData) =>
+    tags.every((tag) => itemData.tags.includes(tag))
+  );
+
+  console.log(filteredData);
 
   return (
     <>
       <header className="overflow-hidden h-[calc(20vh-5px)] bg-mobile-texture bg-left bg-no-repeat bg-desaturated-dark-cyan bg-cover sm:bg-desktop-pattern" />
       <main className="text-[15px] container mx-auto my-16 relative">
-        <div className="flex w-4/5 px-8 py-4 mx-auto mb-16 -mt-24 bg-white rounded-lg shadow-lg lg:mb-6 mb-16lg:mb-6">
+        <div
+          className={`flex w-4/5 px-8 py-4 mx-auto mb-16 -mt-24 bg-white rounded-lg shadow-lg lg:mb-6 mb-16lg:mb-6 ${
+            tags.length === 0 && 'hidden'
+          }`}
+        >
           <div className="flex flex-wrap items-center flex-1 gap-2">
             {tags.map((tag) => (
               <Tag key={tag} close>
@@ -30,7 +44,7 @@ const Home = () => {
             </p>
           </div>
         </div>
-        {data.map((item) => (
+        {filteredData.map((item) => (
           <Card key={item.id} {...item} />
         ))}
       </main>
